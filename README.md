@@ -99,6 +99,10 @@ Vi phạm được xử lý theo quy định của khoá và có thể ảnh hư
 
 MVP cục bộ dùng mock data điểm quá trình 15 buổi trong `data/mock_data/student_scores.json` và trọng số mỗi buổi trong `data/mock_data/lessons_info.json`. Schema mới có thêm `cv_descriptions`; app parse/validate đủ trường đó nhưng **không gửi CV vào prompt chấm**. Gemini chỉ tự đánh giá ba track trên thang **0–10** bằng weighted average từ điểm, metadata lesson và guideline track; UI không thu CV hoặc profile tự khai. Một nút tạo dashboard so sánh đủ 3 track; chat sau đó dùng Gemini prompt với snapshot dashboard và catalogue track, không dùng rule-based scope gate. Dữ liệu runtime nằm trong `runtime/` và đã được git-ignore.
 
+**Chat có 3 scope.** Gemini tự phân loại mỗi câu hỏi: `in_scope` trả lời bằng snapshot dashboard; `out_of_scope` (thời tiết, đời tư…) từ chối một câu; `needs_reference` là câu vẫn đúng chủ đề học tập/nghề AI nhưng bảng điểm không chứa dữ liệu — ví dụ *"AI Product sau này làm những gì"*, *"có video nào chia sẻ về nghề này không"*. Scope này không từ chối nữa mà gọi bước tra cứu: chạy lại Gemini với tool `google_search`, lấy URL thật từ `grounding_metadata` và trả kèm danh sách nguồn (đánh dấu bài viết 📄 / video ▶) hiển thị dưới câu trả lời.
+
+Grounding có quota riêng và hiện **trả 429 trên free tier** (gọi Gemini thường vẫn chạy bình thường). Khi bước tra cứu hỏng hoặc không thu được nguồn nào, app rơi về phương án dự phòng: trả lời bằng kiến thức chung kèm câu cảnh báo *"chưa tra cứu được nguồn trực tiếp"* và sinh link tìm kiếm Google/YouTube từ từ khoá do model đề xuất — link tra cứu luôn hợp lệ nên demo không phụ thuộc quota. Bật quota grounding (billing) là tự động có nguồn thật, không cần đổi code.
+
 ```bash
 uv sync
 uv run python main.py
