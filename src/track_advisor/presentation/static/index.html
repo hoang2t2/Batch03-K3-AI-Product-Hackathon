@@ -3,35 +3,86 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Track Advisor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>AI Self-Assessment Advisor</title>
+    <link rel="stylesheet" href="styles_v2.css">
   </head>
   <body>
     <main>
-      <p class="eyebrow">AI PATHWAY ADVISOR</p>
-      <h1>Định hướng track từ điểm quá trình 15 buổi.</h1>
-      <p class="intro">Gemini chỉ dùng bảng điểm và trọng số từng buổi của ba track để đưa ra gợi ý.</p>
-      <section id="profile" class="panel">
-        <label for="student-select">Học viên demo</label>
-        <select id="student-select"></select>
-        <h2>Bảng điểm dùng để đánh giá</h2>
-        <div id="profile-content"></div>
-        <button id="assess">Xem định hướng học</button>
-        <p id="error"></p>
-      </section>
-      <section id="dashboard" hidden>
-        <div class="panel">
-          <p class="eyebrow">KẾT QUẢ</p>
-          <div id="recommendation"></div>
-          <h2>So sánh đủ 3 track</h2>
-          <div id="tracks" class="grid"></div>
+      <header class="hero">
+        <p class="eyebrow">VLEARN AI TRACK ADVISOR</p>
+        <h1>Khóa học AI Product &amp; AI Engineering được cá nhân hóa theo tiến độ học viên.</h1>
+        <p class="intro">Học viên có thể theo dõi 15 bài học, xem điểm Lab/Quiz và trao đổi với trợ lý AI để chọn nhánh phù hợp ở Giai đoạn 2.</p>
+      </header>
+
+      <section class="course-shell">
+        <aside class="left-nav panel">
+          <p class="eyebrow">NỘI DUNG KHÓA</p>
+          <h3>Danh sách bài học</h3>
+          <div id="left-nav-list"></div>
+        </aside>
+
+        <div class="course-main">
+          <section id="profile" class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">LỘ TRÌNH HỌC</p>
+                <h2>Chọn học viên demo để xem tiến độ và định hướng</h2>
+              </div>
+              <label class="select-wrap" for="student-select">
+                <span>Học viên</span>
+                <select id="student-select"></select>
+              </label>
+            </div>
+            <div id="profile-content"></div>
+            <div class="panel-actions">
+              <button id="assess">Xem đánh giá Giai đoạn 1</button>
+            </div>
+            <p id="error"></p>
+          </section>
+
+          <section id="viewer" class="panel">
+            <p class="eyebrow">TRÌNH XEM BÀI</p>
+            <div id="viewer-content">Chọn một bài để xem chi tiết (mô phỏng slide).</div>
+          </section>
+
+          <section id="dashboard" hidden>
+            <div class="panel">
+              <p class="eyebrow">KẾT QUẢ ĐÁNH GIÁ</p>
+              <div id="recommendation"></div>
+              <div id="self-assessment"></div>
+              <h2>So sánh ba nhánh định hướng</h2>
+              <div id="tracks" class="grid"></div>
+            </div>
+          </section>
         </div>
+<<<<<<< HEAD
         <section class="panel">
           <h2>Hỏi đáp theo dashboard</h2>
           <p>Gemini trả lời bằng snapshot dashboard và thông tin ba track. Câu hỏi đúng chủ đề nhưng vượt ngoài dữ liệu điểm (mô tả nghề, học liệu, công cụ) sẽ được tra cứu bài viết và video kèm nguồn.</p>
           <div id="messages"></div>
           <form id="chat"><input id="question" placeholder="Vì sao track này được gợi ý?" required><button>Hỏi</button></form>
         </section>
+=======
+
+        <aside class="course-side">
+          <section class="panel advisor-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">TRỢ LÝ AI</p>
+                <h2>Tư vấn track phù hợp</h2>
+              </div>
+            </div>
+            <div class="quick-questions">
+              <button class="chip" data-question="Tôi nên chọn track nào cho mục tiêu nghề nghiệp của mình?">Track phù hợp</button>
+              <button class="chip" data-question="Theo điểm Lab và Quiz của tôi, điểm mạnh của tôi ở đâu?">Điểm mạnh</button>
+              <button class="chip" data-question="Bạn có gợi ý lộ trình học tiếp theo cho tôi không?">Lộ trình tiếp</button>
+            </div>
+            <p class="muted">Trợ lý chỉ dùng kết quả đánh giá và thông tin ba nhánh để đề xuất, không truy xuất dữ liệu bên ngoài.</p>
+            <div id="messages"></div>
+            <form id="chat"><input id="question" placeholder="Bạn muốn tư vấn gì thêm?" required><button>Hỏi</button></form>
+          </section>
+        </aside>
+>>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88
       </section>
     </main>
     <script src="app.js"></script>

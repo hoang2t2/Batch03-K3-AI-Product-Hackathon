@@ -1,3 +1,4 @@
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -7,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 from track_advisor.application.assessment_service import AssessmentService
 from track_advisor.application.chat_service import ScopedChatService
 from track_advisor.domain.models import CVDescriptions, StudentProfile, Track, TrackResult
+from track_advisor.infrastructure.gemini_provider import build_provider
 
 
 TRACKS = [
@@ -63,6 +65,7 @@ class AssessmentServiceTests(unittest.TestCase):
     def test_chat_returns_scope_decided_by_provider_prompt(self):
         snapshot = self.assessments.create("student-1")
         chat = ScopedChatService(self.store, Provider(), TRACKS)
+<<<<<<< HEAD
         reply = chat.answer(snapshot["assessment_id"], "Thời tiết hôm nay?")
         self.assertEqual(reply["scope"], "out_of_scope")
         self.assertEqual(reply["sources"], [])
@@ -83,3 +86,33 @@ class AssessmentServiceTests(unittest.TestCase):
         self.assertEqual(provider.searches, ["công việc AI Product"])
         self.assertEqual([source["url"] for source in reply["sources"]], ["https://example.com/a"])
         self.assertTrue(reply["grounded"])
+=======
+        self.assertEqual(chat.answer(snapshot["assessment_id"], "Thời tiết hôm nay?")["scope"], "out_of_scope")
+
+    def test_create_includes_self_assessment_summary(self):
+        snapshot = self.assessments.create("student-1")
+        self.assertIn("self_assessment", snapshot)
+        self.assertIn("nhánh phù hợp nhất", snapshot["self_assessment"])
+
+    def test_profile_summary_exposes_cv_and_course_lessons(self):
+        summary = self.assessments.profile_summary("student-1")
+        self.assertIn("cv_descriptions", summary)
+        self.assertIn("course_lessons", summary)
+        self.assertTrue(summary["course_lessons"])
+
+    def test_build_provider_falls_back_to_mock_when_key_missing(self):
+        previous = os.environ.get("GEMINI_API_KEY")
+        os.environ.pop("GEMINI_API_KEY", None)
+        try:
+            provider = build_provider()
+            self.assertEqual(provider.__class__.__name__, "MockTrackAdvisorProvider")
+        finally:
+            if previous is not None:
+                os.environ["GEMINI_API_KEY"] = previous
+
+    def test_snapshot_includes_self_assessment_context(self):
+        snapshot = self.assessments.create("student-1")
+        self.assertIn("self_assessment_context", snapshot)
+        self.assertEqual(snapshot["self_assessment_context"]["student_id"], "student-1")
+        self.assertEqual(snapshot["self_assessment_context"]["giai_doan_1_focus"], "Tự đánh giá thế mạnh chuyên môn, Lab completion và Quiz score tích lũy")
+>>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88
