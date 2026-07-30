@@ -54,7 +54,7 @@ Bài toán **sửa lỗi VLearn** bị loại vì chưa xác định rõ các ho
 - ④ Đặc thù domain: nhánh đúng không đơn thuần là điểm số, cần bảo vệ tính phù hợp với bối cảnh khoá học.
 
 Kịch bản:
-1. Học viên nhập thiếu điểm Lab/Quiz ⇒ hệ thống báo dữ liệu chưa đủ.
+1. Học viên thiếu điểm Lab/Quiz ⇒ hệ thống báo dữ liệu chưa đủ.
 2. AI đưa ra nhánh không liên quan tới điểm mạnh ⇒ hệ thống cần giải thích bằng dữ liệu.
 3. Học viên hỏi ngoài phạm vi ⇒ chatbot trả về out_of_scope.
 4. Một học viên có điểm kỹ thuật cao nhưng yếu product ⇒ hệ thống ưu tiên nhánh phù hợp hơn.
