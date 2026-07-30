@@ -18,6 +18,13 @@
       "llmops": 94,
       "evaluation": 92,
       "retrospective": 90
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "FastAPI", "LangChain", "ChromaDB", "Docker"],
+        "experience": ["Xây dựng chatbot RAG cho trường đại học", "Phát triển API cho ứng dụng AI"],
+        "strengths": ["Lập trình Python tốt", "Khả năng học công nghệ mới nhanh", "Thích tối ưu hệ thống AI"],
+        "weaknesses": ["Ít kinh nghiệm Product", "Chưa từng làm việc trực tiếp với khách hàng"],
+        "interests": ["Generative AI", "RAG", "AI Infrastructure"]
     }
   },
   {
@@ -39,6 +46,13 @@
       "llmops": 73,
       "evaluation": 89,
       "retrospective": 93
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "SQL", "Figma", "Notion"],
+        "experience": ["Product Owner trong dự án môn học", "Thiết kế prototype cho ứng dụng AI"],
+        "strengths": ["Phân tích yêu cầu tốt", "Giao tiếp tốt", "Có tư duy sản phẩm"],
+        "weaknesses": ["Ít kinh nghiệm Cloud", "Chưa từng triển khai production"],
+        "interests": ["AI Product", "Product Management", "UX"]
     }
   },
   {
@@ -60,6 +74,13 @@
       "llmops": 88,
       "evaluation": 93,
       "retrospective": 94
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "FastAPI", "LangGraph", "Docker", "FAISS"],
+        "experience": ["Xây dựng nhiều chatbot sử dụng RAG", "Triển khai AI Agent cho dự án nhóm"],
+        "strengths": ["Nền tảng AI tốt", "Khả năng tự học cao", "Lập trình tốt"],
+        "weaknesses": ["Chưa có nhiều kinh nghiệm Business"],
+        "interests": ["AI Application", "LLM", "AI Agent"]
     }
   },
   {
@@ -81,6 +102,13 @@
       "llmops": 67,
       "evaluation": 84,
       "retrospective": 90
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Figma", "SQL"],
+        "experience": ["Tham gia Hackathon AI", "Thiết kế giao diện và prototype"],
+        "strengths": ["Thuyết trình tốt", "Làm việc nhóm hiệu quả", "Có tư duy sản phẩm"],
+        "weaknesses": ["Backend còn yếu", "Ít kinh nghiệm DevOps"],
+        "interests": ["AI Product", "Startup", "Business Analysis"]
     }
   },
   {
@@ -102,6 +130,13 @@
       "llmops": 95,
       "evaluation": 89,
       "retrospective": 88
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "GitHub Actions", "PostgreSQL", "Linux"],
+        "experience": ["Deploy chatbot bằng Docker", "Xây dựng pipeline CI/CD cơ bản"],
+        "strengths": ["Quan tâm hiệu năng hệ thống", "Backend tốt", "Khả năng debug tốt"],
+        "weaknesses": ["Ít kinh nghiệm thiết kế sản phẩm"],
+        "interests": ["Cloud", "MLOps", "AI Infrastructure"]
     }
   },
   {
@@ -123,6 +158,13 @@
       "llmops": 73,
       "evaluation": 90,
       "retrospective": 92
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Notion", "Figma", "SQL"],
+        "experience": ["Điều phối nhóm trong dự án AI", "Thiết kế prototype chatbot"],
+        "strengths": ["Tổ chức công việc tốt", "Giao tiếp tốt", "Có trách nhiệm"],
+        "weaknesses": ["Chưa có nhiều kinh nghiệm Backend", "Cloud còn hạn chế"],
+        "interests": ["AI Product", "AI Consulting"]
     }
   },
   {
@@ -144,6 +186,13 @@
       "llmops": 97,
       "evaluation": 91,
       "retrospective": 89
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "Kubernetes", "Grafana", "Prometheus"],
+        "experience": ["Triển khai hệ thống AI trên Kubernetes", "Thiết lập Monitoring cho dự án"],
+        "strengths": ["Thích tối ưu hệ thống", "Khả năng vận hành tốt", "Làm việc độc lập"],
+        "weaknesses": ["Ít quan tâm UX", "Presentation chưa tốt"],
+        "interests": ["LLMOps", "Cloud", "AI Infrastructure"]
     }
   },
   {
@@ -165,6 +214,13 @@
       "llmops": 80,
       "evaluation": 91,
       "retrospective": 92
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "FastAPI", "LangChain", "SQL"],
+        "experience": ["Phát triển chatbot hỗ trợ sinh viên", "Thực hiện dự án AI nhóm"],
+        "strengths": ["Code sạch", "Học nhanh", "Khả năng phối hợp nhóm tốt"],
+        "weaknesses": ["Chưa từng làm việc với Kubernetes"],
+        "interests": ["AI Application", "Generative AI"]
     }
   },
   {
@@ -186,6 +242,13 @@
       "llmops": 72,
       "evaluation": 76,
       "retrospective": 78
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "HTML/CSS", "Git"],
+        "experience": ["Một số dự án môn học nhỏ"],
+        "strengths": ["Chăm chỉ", "Có tinh thần học hỏi"],
+        "weaknesses": ["Ít kinh nghiệm thực tế", "Kiến thức Cloud còn hạn chế", "Chưa có dự án AI lớn"],
+        "interests": ["Machine Learning", "AI Application"]
     }
   },
   {
@@ -207,6 +270,13 @@
       "llmops": 96,
       "evaluation": 94,
       "retrospective": 95
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "FastAPI", "Docker", "LangGraph", "AWS"],
+        "experience": ["Nghiên cứu về AI Agent", "Triển khai chatbot trên Cloud", "Tham gia Hackathon AI"],
+        "strengths": ["Nền tảng kỹ thuật toàn diện", "Khả năng giải quyết vấn đề tốt", "Có kinh nghiệm triển khai"],
+        "weaknesses": ["Chưa có nhiều kinh nghiệm quản lý sản phẩm"],
+        "interests": ["AI Platform", "LLMOps", "AI Application"]
     }
   },
   {
@@ -228,6 +298,13 @@
       "llmops": 92,
       "evaluation": 90,
       "retrospective": 89
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "FAISS", "FastAPI"],
+        "experience": ["Phát triển chatbot nội bộ", "Deploy ứng dụng AI bằng Docker"],
+        "strengths": ["Backend tốt", "Thích nghiên cứu công nghệ mới"],
+        "weaknesses": ["Business chưa mạnh"],
+        "interests": ["AI Infrastructure", "Backend", "RAG"]
     }
   },
   {
@@ -249,6 +326,13 @@
       "llmops": 74,
       "evaluation": 91,
       "retrospective": 94
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "SQL", "Figma", "Notion"],
+        "experience": ["Thiết kế PRD cho sản phẩm AI", "Tham gia Hackathon"],
+        "strengths": ["Khả năng giao tiếp", "Tư duy sản phẩm", "Trình bày tốt"],
+        "weaknesses": ["Cloud và DevOps còn yếu"],
+        "interests": ["AI Product", "Product Owner"]
     }
   },
   {
@@ -270,6 +354,13 @@
       "llmops": 96,
       "evaluation": 95,
       "retrospective": 94
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "Kubernetes", "LangChain", "AWS"],
+        "experience": ["Triển khai nhiều dự án AI", "Thiết lập pipeline MLOps"],
+        "strengths": ["Kỹ thuật toàn diện", "Khả năng tự học rất tốt", "Lãnh đạo nhóm kỹ thuật"],
+        "weaknesses": ["Ít quan tâm Business"],
+        "interests": ["AI Infrastructure", "Platform Engineering"]
     }
   },
   {
@@ -291,6 +382,13 @@
       "llmops": 70,
       "evaluation": 88,
       "retrospective": 91
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Figma", "Canva"],
+        "experience": ["Prototype ứng dụng AI", "Thuyết trình tại Hackathon"],
+        "strengths": ["Sáng tạo", "Làm việc nhóm", "Thấu hiểu người dùng"],
+        "weaknesses": ["Programming chưa thật sự nổi bật"],
+        "interests": ["AI Product", "UX", "Startup"]
     }
   },
   {
@@ -312,6 +410,13 @@
       "llmops": 93,
       "evaluation": 89,
       "retrospective": 88
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "FastAPI", "Docker", "PostgreSQL"],
+        "experience": ["Backend Developer cho dự án AI", "Deploy API bằng Docker"],
+        "strengths": ["Backend tốt", "Có trách nhiệm", "Debug tốt"],
+        "weaknesses": ["Presentation chưa tự tin"],
+        "interests": ["AI Infrastructure", "Backend", "Cloud"]
     }
   },
   {
@@ -333,6 +438,13 @@
       "llmops": 78,
       "evaluation": 90,
       "retrospective": 91
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "SQL", "Notion", "Figma"],
+        "experience": ["Business Analyst trong dự án môn học", "Viết tài liệu yêu cầu"],
+        "strengths": ["Phân tích yêu cầu", "Điều phối nhóm", "Giao tiếp tốt"],
+        "weaknesses": ["Kinh nghiệm AI thực tế chưa nhiều"],
+        "interests": ["AI Product", "Business Analysis"]
     }
   },
   {
@@ -354,6 +466,13 @@
       "llmops": 95,
       "evaluation": 92,
       "retrospective": 90
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "Grafana", "GitHub Actions", "Linux"],
+        "experience": ["Thiết lập Monitoring cho hệ thống AI", "Quản lý CI/CD"],
+        "strengths": ["Quan tâm chất lượng hệ thống", "Khả năng vận hành tốt"],
+        "weaknesses": ["Ít kinh nghiệm thiết kế giao diện"],
+        "interests": ["LLMOps", "DevOps", "AI Infrastructure"]
     }
   },
   {
@@ -375,6 +494,13 @@
       "llmops": 83,
       "evaluation": 92,
       "retrospective": 93
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "LangChain", "FastAPI", "Docker"],
+        "experience": ["Xây dựng chatbot AI", "Phát triển ứng dụng AI nhóm"],
+        "strengths": ["Lập trình tốt", "Thích khám phá công nghệ mới", "Có khả năng tự học"],
+        "weaknesses": ["Chưa từng triển khai hệ thống quy mô lớn"],
+        "interests": ["Generative AI", "AI Application", "RAG"]
     }
   },
   {
@@ -396,6 +522,13 @@
       "llmops": 75,
       "evaluation": 79,
       "retrospective": 80
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Git", "SQL"],
+        "experience": ["Một số dự án học tập", "Tham gia câu lạc bộ AI"],
+        "strengths": ["Tinh thần học hỏi", "Kiên trì"],
+        "weaknesses": ["Ít kinh nghiệm thực tế", "Chưa có dự án AI nổi bật", "Cloud còn yếu"],
+        "interests": ["Machine Learning", "Data Science"]
     }
   },
   {
@@ -417,6 +550,13 @@
       "llmops": 98,
       "evaluation": 96,
       "retrospective": 95
+    },
+    "cv_descriptions": {
+        "technical_skills": ["Python", "Docker", "Kubernetes", "AWS", "LangGraph", "Prometheus"],
+        "experience": ["Leader dự án AI", "Triển khai hệ thống AI trên Cloud", "Thiết kế AI Agent nhiều bước"],
+        "strengths": ["Nền tảng kỹ thuật rất tốt", "Khả năng lãnh đạo", "Kinh nghiệm triển khai thực tế"],
+        "weaknesses": ["Đôi khi quá tập trung vào kỹ thuật hơn trải nghiệm người dùng"],
+        "interests": ["AI Infrastructure", "LLMOps", "Distributed AI Systems"]
     }
   }
 ]

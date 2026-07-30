@@ -1,14 +1,93 @@
 {
   "application": {
     "name": "AI Application",
-    "description": "Xây dựng các ứng dụng AI cho người dùng cuối."
+
+    "description": "Tập trung xây dựng các ứng dụng AI hoàn chỉnh phục vụ người dùng cuối như chatbot, trợ lý AI, hệ thống RAG, AI Agent và các workflow tự động hóa.",
+
+    "focus": [
+      "Xây dựng ứng dụng",
+      "Prompt Engineering",
+      "RAG",
+      "AI Agent",
+      "Tích hợp API"
+    ],
+
+    "ideal_profile": [
+      "Thích lập trình và xây dựng sản phẩm thực tế",
+      "Muốn nhanh chóng tạo ra ứng dụng có thể sử dụng",
+      "Quan tâm trải nghiệm người dùng hơn hạ tầng"
+    ],
+
+    "important_lessons": [
+      "prompt_engineering",
+      "react_agent",
+      "rag_pipeline",
+      "multi_agent",
+      "evaluation"
+    ],
+
+    "evaluation_guideline": "Ưu tiên học viên có điểm cao ở Prompt Engineering, ReAct, RAG Pipeline và Multi-Agent. Nếu điểm Cloud hay LLMOps không quá nổi bật vẫn có thể rất phù hợp."
   },
+
   "product": {
     "name": "AI Product",
-    "description": "Thiết kế và phát triển sản phẩm AI."
+
+    "description": "Tập trung vào việc xác định nhu cầu người dùng, thiết kế tính năng AI, lập kế hoạch phát triển và đánh giá giá trị kinh doanh của sản phẩm.",
+
+    "focus": [
+      "Problem Solving",
+      "Product Thinking",
+      "Requirement Analysis",
+      "PRD",
+      "Prototype"
+    ],
+
+    "ideal_profile": [
+      "Thích làm việc với khách hàng",
+      "Quan tâm trải nghiệm người dùng",
+      "Có tư duy sản phẩm",
+      "Giỏi phân tích bài toán hơn tối ưu thuật toán"
+    ],
+
+    "important_lessons": [
+      "problem_definition",
+      "product_thinking",
+      "prototype_demo",
+      "guardrails",
+      "evaluation"
+    ],
+
+    "evaluation_guideline": "Ưu tiên học viên có khả năng phân tích bài toán, thiết kế sản phẩm và trình bày ý tưởng. Không yêu cầu điểm Infrastructure quá cao."
   },
+
   "infrastructure": {
     "name": "AI Infrastructure",
-    "description": "Triển khai, vận hành và tối ưu hệ thống AI."
+
+    "description": "Tập trung xây dựng nền tảng phục vụ AI bao gồm Data Pipeline, Cloud, Deployment, Monitoring, LLMOps và tối ưu khả năng vận hành hệ thống.",
+
+    "focus": [
+      "Deployment",
+      "Cloud",
+      "Data Pipeline",
+      "Monitoring",
+      "LLMOps"
+    ],
+
+    "ideal_profile": [
+      "Thích tối ưu hệ thống",
+      "Quan tâm hiệu năng và độ ổn định",
+      "Yêu thích DevOps hoặc Backend",
+      "Muốn xây dựng nền tảng cho các ứng dụng AI"
+    ],
+
+    "important_lessons": [
+      "data_foundation",
+      "data_pipeline",
+      "cloud_deployment",
+      "llmops",
+      "multi_agent"
+    ],
+
+    "evaluation_guideline": "Ưu tiên học viên có điểm cao ở Cloud Deployment, LLMOps và Data Pipeline. Các kỹ năng về Agent và RAG là lợi thế nhưng không phải yếu tố quyết định."
   }
 }

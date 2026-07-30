@@ -33,7 +33,7 @@
 
     "react_agent": {
       "lesson": 3,
-      "title": "Design Pattern ReAct",
+      "title": "Design Pattern ReAct (Kiến trúc Agent, Agent Loop, Thought-Action-Obs)",
       "skills": [
         "agent",
         "reasoning",
@@ -49,7 +49,7 @@
 
     "prompt_engineering": {
       "lesson": 4,
-      "title": "Prompt Engineering & Tool Calling",
+      "title": "Prompt Engineering & Tool Calling (System prompt, Function calling, LangGraph)",
       "skills": [
         "prompt",
         "tool_calling",
@@ -65,7 +65,7 @@
 
     "product_thinking": {
       "lesson": 5,
-      "title": "AI Product Thinking & Requirements",
+      "title": "AI Product Thinking & Requirements (PRD cho AI, Risk Assessment)",
       "skills": [
         "prd",
         "product_design",
@@ -81,7 +81,7 @@
 
     "prototype_demo": {
       "lesson": 6,
-      "title": "AI Product Prototype & Demo",
+      "title": "AI Product Prototype & Demo (Hackathon)",
       "skills": [
         "prototype",
         "demo",
@@ -97,7 +97,7 @@
 
     "data_foundation": {
       "lesson": 7,
-      "title": "Data Foundations",
+      "title": "Data Foundations (Embedding, Chunking, Vector Store - ChromaDB/FAISS)",
       "skills": [
         "embedding",
         "chunking",
@@ -114,7 +114,7 @@
 
     "rag_pipeline": {
       "lesson": 8,
-      "title": "RAG Pipeline",
+      "title": "RAG Pipeline (Hybrid search, Re-ranking, RAG evaluation)",
       "skills": [
         "rag",
         "retrieval",
@@ -130,7 +130,7 @@
 
     "multi_agent": {
       "lesson": 9,
-      "title": "Multi-Agent & MCP/A2A",
+      "title": "Multi-Agent & MCP/A2A (Supervisor pattern, Agent-to-Agent communication)",
       "skills": [
         "multi_agent",
         "mcp",
