@@ -1,0 +1,20 @@
+from __future__ import annotations
+
+from typing import Protocol
+
+from track_advisor.domain.models import StudentProfile, Track, TrackResult
+
+
+class StudentProfileRepository(Protocol):
+    def get(self, student_id: str) -> StudentProfile | None: ...
+    def list_students(self) -> list[dict[str, str]]: ...
+
+
+class AssessmentRepository(Protocol):
+    def save(self, snapshot: dict) -> None: ...
+    def get(self, assessment_id: str) -> dict | None: ...
+
+
+class TrackAdvisorProvider(Protocol):
+    def evaluate(self, profile: StudentProfile, tracks: list[Track]) -> list[TrackResult]: ...
+    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]: ...

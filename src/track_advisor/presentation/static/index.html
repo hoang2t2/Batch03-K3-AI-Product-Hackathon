@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Track Advisor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">AI PATHWAY ADVISOR</p>
+      <h1>Định hướng track từ điểm quá trình 15 buổi.</h1>
+      <p class="intro">Gemini chỉ dùng bảng điểm và trọng số từng buổi của ba track để đưa ra gợi ý.</p>
+      <section id="profile" class="panel">
+        <label for="student-select">Học viên demo</label>
+        <select id="student-select"></select>
+        <h2>Bảng điểm dùng để đánh giá</h2>
+        <div id="profile-content"></div>
+        <button id="assess">Xem định hướng học</button>
+        <p id="error"></p>
+      </section>
+      <section id="dashboard" hidden>
+        <div class="panel">
+          <p class="eyebrow">KẾT QUẢ</p>
+          <div id="recommendation"></div>
+          <h2>So sánh đủ 3 track</h2>
+          <div id="tracks" class="grid"></div>
+        </div>
+        <section class="panel">
+          <h2>Hỏi đáp theo dashboard</h2>
+          <p>Gemini chỉ dùng snapshot dashboard và thông tin ba track; không truy xuất nguồn ngoài.</p>
+          <div id="messages"></div>
+          <form id="chat"><input id="question" placeholder="Vì sao track này được gợi ý?" required><button>Hỏi</button></form>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
