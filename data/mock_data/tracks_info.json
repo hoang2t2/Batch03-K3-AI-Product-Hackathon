@@ -1,0 +1,14 @@
+{
+  "application": {
+    "name": "AI Application",
+    "description": "Xây dựng các ứng dụng AI cho người dùng cuối."
+  },
+  "product": {
+    "name": "AI Product",
+    "description": "Thiết kế và phát triển sản phẩm AI."
+  },
+  "infrastructure": {
+    "name": "AI Infrastructure",
+    "description": "Triển khai, vận hành và tối ưu hệ thống AI."
+  }
+}

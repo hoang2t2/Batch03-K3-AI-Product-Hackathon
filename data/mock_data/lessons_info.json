@@ -1,0 +1,242 @@
+{
+  "lessons": {
+    "ai_foundation": {
+      "lesson": 1,
+      "title": "AI & LLM Foundation",
+      "skills": [
+        "llm",
+        "transformer",
+        "token",
+        "reasoning"
+      ],
+      "weight": {
+        "application": 0.35,
+        "product": 0.30,
+        "infrastructure": 0.35
+      }
+    },
+
+    "problem_definition": {
+      "lesson": 2,
+      "title": "Xác định Bài toán cho AI",
+      "skills": [
+        "problem_analysis",
+        "requirement_analysis",
+        "solution_design"
+      ],
+      "weight": {
+        "application": 0.25,
+        "product": 0.60,
+        "infrastructure": 0.15
+      }
+    },
+
+    "react_agent": {
+      "lesson": 3,
+      "title": "Design Pattern ReAct",
+      "skills": [
+        "agent",
+        "reasoning",
+        "tool_usage",
+        "planning"
+      ],
+      "weight": {
+        "application": 0.45,
+        "product": 0.20,
+        "infrastructure": 0.35
+      }
+    },
+
+    "prompt_engineering": {
+      "lesson": 4,
+      "title": "Prompt Engineering & Tool Calling",
+      "skills": [
+        "prompt",
+        "tool_calling",
+        "langgraph",
+        "agent_design"
+      ],
+      "weight": {
+        "application": 0.45,
+        "product": 0.30,
+        "infrastructure": 0.25
+      }
+    },
+
+    "product_thinking": {
+      "lesson": 5,
+      "title": "AI Product Thinking & Requirements",
+      "skills": [
+        "prd",
+        "product_design",
+        "risk_assessment",
+        "user_requirement"
+      ],
+      "weight": {
+        "application": 0.15,
+        "product": 0.75,
+        "infrastructure": 0.10
+      }
+    },
+
+    "prototype_demo": {
+      "lesson": 6,
+      "title": "AI Product Prototype & Demo",
+      "skills": [
+        "prototype",
+        "demo",
+        "presentation",
+        "rapid_development"
+      ],
+      "weight": {
+        "application": 0.30,
+        "product": 0.60,
+        "infrastructure": 0.10
+      }
+    },
+
+    "data_foundation": {
+      "lesson": 7,
+      "title": "Data Foundations",
+      "skills": [
+        "embedding",
+        "chunking",
+        "vector_store",
+        "faiss",
+        "chromadb"
+      ],
+      "weight": {
+        "application": 0.40,
+        "product": 0.15,
+        "infrastructure": 0.45
+      }
+    },
+
+    "rag_pipeline": {
+      "lesson": 8,
+      "title": "RAG Pipeline",
+      "skills": [
+        "rag",
+        "retrieval",
+        "reranking",
+        "evaluation"
+      ],
+      "weight": {
+        "application": 0.50,
+        "product": 0.15,
+        "infrastructure": 0.35
+      }
+    },
+
+    "multi_agent": {
+      "lesson": 9,
+      "title": "Multi-Agent & MCP/A2A",
+      "skills": [
+        "multi_agent",
+        "mcp",
+        "a2a",
+        "orchestration"
+      ],
+      "weight": {
+        "application": 0.40,
+        "product": 0.20,
+        "infrastructure": 0.40
+      }
+    },
+
+    "data_pipeline": {
+      "lesson": 10,
+      "title": "Data Pipeline & Data Observability",
+      "skills": [
+        "etl",
+        "pipeline",
+        "observability",
+        "data_engineering"
+      ],
+      "weight": {
+        "application": 0.20,
+        "product": 0.10,
+        "infrastructure": 0.70
+      }
+    },
+
+    "guardrails": {
+      "lesson": 11,
+      "title": "Guardrails, HITL & Responsible AI",
+      "skills": [
+        "guardrails",
+        "safety",
+        "human_in_the_loop",
+        "responsible_ai"
+      ],
+      "weight": {
+        "application": 0.35,
+        "product": 0.35,
+        "infrastructure": 0.30
+      }
+    },
+
+    "cloud_deployment": {
+      "lesson": 12,
+      "title": "Hạ Tầng Cloud & Deployment",
+      "skills": [
+        "docker",
+        "cloud",
+        "deployment",
+        "kubernetes"
+      ],
+      "weight": {
+        "application": 0.15,
+        "product": 0.10,
+        "infrastructure": 0.75
+      }
+    },
+
+    "llmops": {
+      "lesson": 13,
+      "title": "Monitoring & LLMOps",
+      "skills": [
+        "monitoring",
+        "logging",
+        "llmops",
+        "ci_cd"
+      ],
+      "weight": {
+        "application": 0.20,
+        "product": 0.15,
+        "infrastructure": 0.65
+      }
+    },
+
+    "evaluation": {
+      "lesson": 14,
+      "title": "Evaluation Pipeline & Failure Analysis",
+      "skills": [
+        "evaluation",
+        "benchmark",
+        "failure_analysis",
+        "metrics"
+      ],
+      "weight": {
+        "application": 0.40,
+        "product": 0.30,
+        "infrastructure": 0.30
+      }
+    },
+
+    "retrospective": {
+      "lesson": 15,
+      "title": "Retrospective & Định Hướng Chuyên Sâu",
+      "skills": [
+        "reflection",
+        "career_orientation",
+        "communication"
+      ],
+      "weight": {
+        "application": 0.30,
+        "product": 0.40,
+        "infrastructure": 0.30
+      }
+    }
+  }
+}

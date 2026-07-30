@@ -1,0 +1,422 @@
+[
+  {
+    "student_id": "HV001",
+    "name": "Nguyễn Văn An",
+    "scores": {
+      "ai_foundation": 91,
+      "problem_definition": 88,
+      "react_agent": 90,
+      "prompt_engineering": 94,
+      "product_thinking": 72,
+      "prototype_demo": 70,
+      "data_foundation": 92,
+      "rag_pipeline": 94,
+      "multi_agent": 93,
+      "data_pipeline": 91,
+      "guardrails": 88,
+      "cloud_deployment": 95,
+      "llmops": 94,
+      "evaluation": 92,
+      "retrospective": 90
+    }
+  },
+  {
+    "student_id": "HV002",
+    "name": "Trần Minh Khôi",
+    "scores": {
+      "ai_foundation": 87,
+      "problem_definition": 90,
+      "react_agent": 85,
+      "prompt_engineering": 88,
+      "product_thinking": 94,
+      "prototype_demo": 95,
+      "data_foundation": 76,
+      "rag_pipeline": 78,
+      "multi_agent": 82,
+      "data_pipeline": 74,
+      "guardrails": 90,
+      "cloud_deployment": 71,
+      "llmops": 73,
+      "evaluation": 89,
+      "retrospective": 93
+    }
+  },
+  {
+    "student_id": "HV003",
+    "name": "Lê Thu Hà",
+    "scores": {
+      "ai_foundation": 93,
+      "problem_definition": 92,
+      "react_agent": 94,
+      "prompt_engineering": 96,
+      "product_thinking": 88,
+      "prototype_demo": 89,
+      "data_foundation": 90,
+      "rag_pipeline": 92,
+      "multi_agent": 94,
+      "data_pipeline": 89,
+      "guardrails": 91,
+      "cloud_deployment": 86,
+      "llmops": 88,
+      "evaluation": 93,
+      "retrospective": 94
+    }
+  },
+  {
+    "student_id": "HV004",
+    "name": "Phạm Quốc Bảo",
+    "scores": {
+      "ai_foundation": 72,
+      "problem_definition": 75,
+      "react_agent": 73,
+      "prompt_engineering": 76,
+      "product_thinking": 90,
+      "prototype_demo": 92,
+      "data_foundation": 70,
+      "rag_pipeline": 68,
+      "multi_agent": 74,
+      "data_pipeline": 69,
+      "guardrails": 88,
+      "cloud_deployment": 65,
+      "llmops": 67,
+      "evaluation": 84,
+      "retrospective": 90
+    }
+  },
+  {
+    "student_id": "HV005",
+    "name": "Đỗ Gia Huy",
+    "scores": {
+      "ai_foundation": 84,
+      "problem_definition": 82,
+      "react_agent": 83,
+      "prompt_engineering": 86,
+      "product_thinking": 75,
+      "prototype_demo": 74,
+      "data_foundation": 88,
+      "rag_pipeline": 90,
+      "multi_agent": 91,
+      "data_pipeline": 92,
+      "guardrails": 85,
+      "cloud_deployment": 94,
+      "llmops": 95,
+      "evaluation": 89,
+      "retrospective": 88
+    }
+  },
+  {
+    "student_id": "HV006",
+    "name": "Ngô Khánh Linh",
+    "scores": {
+      "ai_foundation": 79,
+      "problem_definition": 81,
+      "react_agent": 80,
+      "prompt_engineering": 83,
+      "product_thinking": 92,
+      "prototype_demo": 94,
+      "data_foundation": 78,
+      "rag_pipeline": 79,
+      "multi_agent": 80,
+      "data_pipeline": 76,
+      "guardrails": 91,
+      "cloud_deployment": 74,
+      "llmops": 73,
+      "evaluation": 90,
+      "retrospective": 92
+    }
+  },
+  {
+    "student_id": "HV007",
+    "name": "Vũ Đức Long",
+    "scores": {
+      "ai_foundation": 90,
+      "problem_definition": 89,
+      "react_agent": 88,
+      "prompt_engineering": 92,
+      "product_thinking": 77,
+      "prototype_demo": 76,
+      "data_foundation": 94,
+      "rag_pipeline": 95,
+      "multi_agent": 93,
+      "data_pipeline": 94,
+      "guardrails": 86,
+      "cloud_deployment": 96,
+      "llmops": 97,
+      "evaluation": 91,
+      "retrospective": 89
+    }
+  },
+  {
+    "student_id": "HV008",
+    "name": "Bùi Mai Anh",
+    "scores": {
+      "ai_foundation": 86,
+      "problem_definition": 88,
+      "react_agent": 87,
+      "prompt_engineering": 89,
+      "product_thinking": 91,
+      "prototype_demo": 92,
+      "data_foundation": 85,
+      "rag_pipeline": 84,
+      "multi_agent": 88,
+      "data_pipeline": 82,
+      "guardrails": 90,
+      "cloud_deployment": 81,
+      "llmops": 80,
+      "evaluation": 91,
+      "retrospective": 92
+    }
+  },
+  {
+    "student_id": "HV009",
+    "name": "Hoàng Tuấn Kiệt",
+    "scores": {
+      "ai_foundation": 68,
+      "problem_definition": 70,
+      "react_agent": 71,
+      "prompt_engineering": 73,
+      "product_thinking": 69,
+      "prototype_demo": 68,
+      "data_foundation": 72,
+      "rag_pipeline": 70,
+      "multi_agent": 71,
+      "data_pipeline": 73,
+      "guardrails": 75,
+      "cloud_deployment": 74,
+      "llmops": 72,
+      "evaluation": 76,
+      "retrospective": 78
+    }
+  },
+  {
+    "student_id": "HV010",
+    "name": "Phan Hải Nam",
+    "scores": {
+      "ai_foundation": 95,
+      "problem_definition": 94,
+      "react_agent": 95,
+      "prompt_engineering": 96,
+      "product_thinking": 87,
+      "prototype_demo": 86,
+      "data_foundation": 93,
+      "rag_pipeline": 94,
+      "multi_agent": 95,
+      "data_pipeline": 94,
+      "guardrails": 92,
+      "cloud_deployment": 95,
+      "llmops": 96,
+      "evaluation": 94,
+      "retrospective": 95
+    }
+  },
+  {
+    "student_id": "HV011",
+    "name": "Nguyễn Hoàng Phúc",
+    "scores": {
+      "ai_foundation": 88,
+      "problem_definition": 86,
+      "react_agent": 87,
+      "prompt_engineering": 90,
+      "product_thinking": 74,
+      "prototype_demo": 76,
+      "data_foundation": 91,
+      "rag_pipeline": 92,
+      "multi_agent": 90,
+      "data_pipeline": 89,
+      "guardrails": 87,
+      "cloud_deployment": 93,
+      "llmops": 92,
+      "evaluation": 90,
+      "retrospective": 89
+    }
+  },
+  {
+    "student_id": "HV012",
+    "name": "Trần Gia Hân",
+    "scores": {
+      "ai_foundation": 82,
+      "problem_definition": 84,
+      "react_agent": 83,
+      "prompt_engineering": 85,
+      "product_thinking": 94,
+      "prototype_demo": 95,
+      "data_foundation": 79,
+      "rag_pipeline": 80,
+      "multi_agent": 82,
+      "data_pipeline": 77,
+      "guardrails": 92,
+      "cloud_deployment": 75,
+      "llmops": 74,
+      "evaluation": 91,
+      "retrospective": 94
+    }
+  },
+  {
+    "student_id": "HV013",
+    "name": "Lê Minh Đức",
+    "scores": {
+      "ai_foundation": 94,
+      "problem_definition": 93,
+      "react_agent": 95,
+      "prompt_engineering": 96,
+      "product_thinking": 84,
+      "prototype_demo": 83,
+      "data_foundation": 95,
+      "rag_pipeline": 96,
+      "multi_agent": 95,
+      "data_pipeline": 94,
+      "guardrails": 91,
+      "cloud_deployment": 97,
+      "llmops": 96,
+      "evaluation": 95,
+      "retrospective": 94
+    }
+  },
+  {
+    "student_id": "HV014",
+    "name": "Phạm Ngọc Mai",
+    "scores": {
+      "ai_foundation": 76,
+      "problem_definition": 78,
+      "react_agent": 77,
+      "prompt_engineering": 79,
+      "product_thinking": 91,
+      "prototype_demo": 93,
+      "data_foundation": 74,
+      "rag_pipeline": 75,
+      "multi_agent": 76,
+      "data_pipeline": 73,
+      "guardrails": 90,
+      "cloud_deployment": 71,
+      "llmops": 70,
+      "evaluation": 88,
+      "retrospective": 91
+    }
+  },
+  {
+    "student_id": "HV015",
+    "name": "Đặng Tuấn Anh",
+    "scores": {
+      "ai_foundation": 85,
+      "problem_definition": 87,
+      "react_agent": 86,
+      "prompt_engineering": 89,
+      "product_thinking": 79,
+      "prototype_demo": 80,
+      "data_foundation": 89,
+      "rag_pipeline": 90,
+      "multi_agent": 91,
+      "data_pipeline": 90,
+      "guardrails": 86,
+      "cloud_deployment": 92,
+      "llmops": 93,
+      "evaluation": 89,
+      "retrospective": 88
+    }
+  },
+  {
+    "student_id": "HV016",
+    "name": "Võ Thanh Tùng",
+    "scores": {
+      "ai_foundation": 81,
+      "problem_definition": 80,
+      "react_agent": 82,
+      "prompt_engineering": 84,
+      "product_thinking": 90,
+      "prototype_demo": 91,
+      "data_foundation": 83,
+      "rag_pipeline": 82,
+      "multi_agent": 84,
+      "data_pipeline": 81,
+      "guardrails": 89,
+      "cloud_deployment": 79,
+      "llmops": 78,
+      "evaluation": 90,
+      "retrospective": 91
+    }
+  },
+  {
+    "student_id": "HV017",
+    "name": "Bùi Quốc Thịnh",
+    "scores": {
+      "ai_foundation": 92,
+      "problem_definition": 90,
+      "react_agent": 91,
+      "prompt_engineering": 93,
+      "product_thinking": 78,
+      "prototype_demo": 77,
+      "data_foundation": 94,
+      "rag_pipeline": 95,
+      "multi_agent": 94,
+      "data_pipeline": 93,
+      "guardrails": 88,
+      "cloud_deployment": 96,
+      "llmops": 95,
+      "evaluation": 92,
+      "retrospective": 90
+    }
+  },
+  {
+    "student_id": "HV018",
+    "name": "Nguyễn Thu Trang",
+    "scores": {
+      "ai_foundation": 89,
+      "problem_definition": 90,
+      "react_agent": 88,
+      "prompt_engineering": 91,
+      "product_thinking": 92,
+      "prototype_demo": 94,
+      "data_foundation": 87,
+      "rag_pipeline": 86,
+      "multi_agent": 89,
+      "data_pipeline": 85,
+      "guardrails": 93,
+      "cloud_deployment": 84,
+      "llmops": 83,
+      "evaluation": 92,
+      "retrospective": 93
+    }
+  },
+  {
+    "student_id": "HV019",
+    "name": "Đỗ Minh Quân",
+    "scores": {
+      "ai_foundation": 71,
+      "problem_definition": 72,
+      "react_agent": 70,
+      "prompt_engineering": 73,
+      "product_thinking": 67,
+      "prototype_demo": 69,
+      "data_foundation": 75,
+      "rag_pipeline": 74,
+      "multi_agent": 73,
+      "data_pipeline": 76,
+      "guardrails": 78,
+      "cloud_deployment": 77,
+      "llmops": 75,
+      "evaluation": 79,
+      "retrospective": 80
+    }
+  },
+  {
+    "student_id": "HV020",
+    "name": "Phan Nhật Nam",
+    "scores": {
+      "ai_foundation": 96,
+      "problem_definition": 95,
+      "react_agent": 96,
+      "prompt_engineering": 97,
+      "product_thinking": 89,
+      "prototype_demo": 88,
+      "data_foundation": 94,
+      "rag_pipeline": 95,
+      "multi_agent": 96,
+      "data_pipeline": 95,
+      "guardrails": 93,
+      "cloud_deployment": 97,
+      "llmops": 98,
+      "evaluation": 96,
+      "retrospective": 95
+    }
+  }
+]
