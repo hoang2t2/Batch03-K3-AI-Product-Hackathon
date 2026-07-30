@@ -2,6 +2,7 @@ import os
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "src"))
 
@@ -65,7 +66,6 @@ class AssessmentServiceTests(unittest.TestCase):
     def test_chat_returns_scope_decided_by_provider_prompt(self):
         snapshot = self.assessments.create("student-1")
         chat = ScopedChatService(self.store, Provider(), TRACKS)
-<<<<<<< HEAD
         reply = chat.answer(snapshot["assessment_id"], "Thời tiết hôm nay?")
         self.assertEqual(reply["scope"], "out_of_scope")
         self.assertEqual(reply["sources"], [])
@@ -86,8 +86,6 @@ class AssessmentServiceTests(unittest.TestCase):
         self.assertEqual(provider.searches, ["công việc AI Product"])
         self.assertEqual([source["url"] for source in reply["sources"]], ["https://example.com/a"])
         self.assertTrue(reply["grounded"])
-=======
-        self.assertEqual(chat.answer(snapshot["assessment_id"], "Thời tiết hôm nay?")["scope"], "out_of_scope")
 
     def test_create_includes_self_assessment_summary(self):
         snapshot = self.assessments.create("student-1")
@@ -104,7 +102,9 @@ class AssessmentServiceTests(unittest.TestCase):
         previous = os.environ.get("GEMINI_API_KEY")
         os.environ.pop("GEMINI_API_KEY", None)
         try:
-            provider = build_provider()
+            # Máy dev có thể có .env thật; chặn load_dotenv để test đo đúng nhánh fallback.
+            with mock.patch("track_advisor.infrastructure.gemini_provider.load_dotenv"):
+                provider = build_provider()
             self.assertEqual(provider.__class__.__name__, "MockTrackAdvisorProvider")
         finally:
             if previous is not None:
@@ -115,4 +115,3 @@ class AssessmentServiceTests(unittest.TestCase):
         self.assertIn("self_assessment_context", snapshot)
         self.assertEqual(snapshot["self_assessment_context"]["student_id"], "student-1")
         self.assertEqual(snapshot["self_assessment_context"]["giai_doan_1_focus"], "Tự đánh giá thế mạnh chuyên môn, Lab completion và Quiz score tích lũy")
->>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88

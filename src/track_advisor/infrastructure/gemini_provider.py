@@ -186,7 +186,7 @@ CONTEXT: {json.dumps(self._chat_context(snapshot, tracks), ensure_ascii=False)}"
         scope = payload.get("scope")
         if not isinstance(answer, str) or scope not in {"in_scope", "needs_reference", "out_of_scope"}:
             raise ValueError("Gemini chat output không đúng schema.")
-<<<<<<< HEAD
+
         return {"scope": scope, "answer": answer, "search_query": str(payload.get("search_query") or "")}
 
     def search_references(self, question: str, search_query: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
@@ -255,8 +255,8 @@ Chỉ trả JSON: {{"answer":"<markdown>","keywords":["...","..."]}}"""
                 "source": "youtube.com", "kind": "video",
             })
         return {"answer": (answer or "Chưa tra cứu được nội dung cho câu hỏi này.") + note, "sources": sources, "grounded": False}
-=======
-        return {"scope": scope, "answer": answer}
+
+
 class MockTrackAdvisorProvider:
     """Deterministic fallback provider for local demo and tests without API access."""
 
@@ -271,13 +271,17 @@ class MockTrackAdvisorProvider:
             results.append(TrackResult(track.id, suitability_score, reasons, suggestions))
         return sorted(results, key=lambda item: -item.suitability_score)
 
-    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
+    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
         normalized = question.lower()
         if any(keyword in normalized for keyword in ["thời tiết", "ngoại khóa", "đi chơi"]):
-            return {"scope": "out_of_scope", "answer": "Tôi chỉ hỗ trợ phân tích kết quả đánh giá và gợi ý nhánh định hướng ở Giai đoạn 2."}
+            return {"scope": "out_of_scope", "answer": "Tôi chỉ hỗ trợ phân tích kết quả đánh giá và gợi ý nhánh định hướng ở Giai đoạn 2.", "search_query": ""}
         recommended = ", ".join(snapshot.get("recommendation_ids", []))
-        return {"scope": "in_scope", "answer": f"Dựa trên snapshot đánh giá, các nhánh được đề xuất là {recommended}. Hãy xem lại điểm Lab và Quiz tích lũy để chọn nhánh phù hợp nhất."}
->>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88
+        return {"scope": "in_scope", "answer": f"Dựa trên snapshot đánh giá, các nhánh được đề xuất là {recommended}. Hãy xem lại điểm Lab và Quiz tích lũy để chọn nhánh phù hợp nhất.", "search_query": ""}
+
+    def search_references(self, question: str, search_query: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
+        """Mock không tra cứu web; answer() không bao giờ trả needs_reference nên đây chỉ là fallback an toàn."""
+        return {"answer": "Bản demo cục bộ chưa tra cứu được nguồn ngoài.", "sources": [], "grounded": False}
+
 
 
 def build_provider():

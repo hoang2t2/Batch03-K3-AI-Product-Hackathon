@@ -2,8 +2,11 @@ let studentId = "HV001";
 let assessmentId;
 
 const $ = (id) => document.getElementById(id);
-<<<<<<< HEAD
-function esc(value) { const p = document.createElement("p"); p.textContent = value; return p.innerHTML; }
+function esc(value) {
+  const p = document.createElement("p");
+  p.textContent = value == null ? "" : String(value);
+  return p.innerHTML;
+}
 const inline = (value) => value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 function markdown(value) {
   // Escape first, then build HTML: câu trả lời của model không bao giờ chèn được thẻ thật.
@@ -35,14 +38,7 @@ function sourceList(sources, grounded) {
     `<li><span class="kind">${source.kind === "video" ? "▶" : "📄"}</span><a href="${attr(source.href)}" target="_blank" rel="noopener noreferrer">${esc(source.title || source.href)}</a>${source.source ? `<span class="host">${esc(source.source)}</span>` : ""}</li>`
   ).join("")}</ul></div>`;
 }
-=======
-function esc(value) {
-  const p = document.createElement("p");
-  p.textContent = value == null ? "" : String(value);
-  return p.innerHTML;
-}
 
->>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88
 async function request(url, options) {
   const response = await fetch(url, options);
   const payload = await response.json();
@@ -222,7 +218,10 @@ $("chat").onsubmit = async (event) => {
   if (!question) return;
   $("messages").insertAdjacentHTML("beforeend", `<p class="user">${esc(question)}</p>`);
   $("question").value = "";
-<<<<<<< HEAD
+  if (!assessmentId) {
+    $("messages").insertAdjacentHTML("beforeend", `<p class="bot">Bấm <b>Xem đánh giá Giai đoạn 1</b> trước để trợ lý AI có thể dùng kết quả của bạn.</p>`);
+    return;
+  }
   $("messages").insertAdjacentHTML("beforeend", `<p class="bot pending">Đang tìm câu trả lời…</p>`);
   const pending = $("messages").lastElementChild;
   try {
@@ -231,16 +230,6 @@ $("chat").onsubmit = async (event) => {
     $("messages").insertAdjacentHTML("beforeend", `<div class="bot">${markdown(output.answer)}${sourceList(output.sources, output.grounded)}</div>`);
   } catch (error) {
     pending.remove();
-=======
-  if (!assessmentId) {
-    $("messages").insertAdjacentHTML("beforeend", `<p class="bot">Bấm <b>Xem đánh giá Giai đoạn 1</b> trước để trợ lý AI có thể dùng kết quả của bạn.</p>`);
-    return;
-  }
-  try {
-    const output = await request("/api/chats", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ assessment_id: assessmentId, question }) });
-    $("messages").insertAdjacentHTML("beforeend", `<p class="bot">${esc(output.answer)}</p>`);
-  } catch (error) {
->>>>>>> 19f31ca7e831155c33ebf09e1ffa70125d7e8f88
     $("messages").insertAdjacentHTML("beforeend", `<p class="bot">${esc(error.message)}</p>`);
   }
 };
