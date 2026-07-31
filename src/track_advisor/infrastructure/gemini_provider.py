@@ -105,14 +105,6 @@ LESSON_WEIGHTS:
             for item in values
         ]
 
-<<<<<<< HEAD
-    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
-        snapshot = snapshot or {}
-        dashboard_snapshot = {
-            "assessment_id": snapshot.get("assessment_id", "unknown"),
-            "track_results": snapshot.get("track_results", []),
-            "recommendation_ids": snapshot.get("recommendation_ids", []),
-=======
     def _chat_context(self, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
         """Compact, human-readable view: lesson titles + scores + per-track weights, tracks sorted by fit."""
         titles = {lesson_id: meta["title"] for lesson_id, meta in tracks[0].lesson_metadata.items()}
@@ -138,7 +130,6 @@ LESSON_WEIGHTS:
                 }
                 for track in sorted(tracks, key=lambda track: -results[track.id]["suitability_score"])
             ],
->>>>>>> b3df1bb7661bb91d787c0073a29db3ca6b333913
         }
 
     def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
@@ -267,44 +258,144 @@ Chỉ trả JSON: {{"answer":"<markdown>","keywords":["...","..."]}}"""
 
 
 class MockTrackAdvisorProvider:
-    """Deterministic fallback provider for local demo and tests without API access."""
+    """Deterministic fallback provider."""
 
-    def evaluate(self, profile: StudentProfile, tracks: list[Track]) -> list[TrackResult]:
-        results: list[TrackResult] = []
-        for track in tracks:
-            total_weight = sum(track.lesson_weights.values())
-            weighted_score = sum(profile.learning_scores.get(lesson_id, 0.0) * weight for lesson_id, weight in track.lesson_weights.items()) / total_weight
-            suitability_score = round(max(0.0, min(10.0, weighted_score / 10.0)), 1)
-            reasons = [f"Điểm nổi bật ở {lesson_id}: {profile.learning_scores.get(lesson_id, 0.0)}/100" for lesson_id in sorted(track.lesson_weights)[:3]]
-            suggestions = [f"Củng cố {lesson_id} để tăng độ phù hợp với {track.name}" for lesson_id in sorted(track.lesson_weights)[-2:]]
-            results.append(TrackResult(track.id, suitability_score, reasons, suggestions))
-        return sorted(results, key=lambda item: -item.suitability_score)
+    OUT_OF_SCOPE_KEYWORDS = {
+        "thời tiết",
+        "đi chơi",
+        "ngoại khóa",
+        "du lịch",
+        "bóng đá",
+        "gia đình",
+        "tình cảm",
+        "cv",
+        "xin việc",
+        "lương",
+        "sức khỏe",
+    }
 
-<<<<<<< HEAD
-    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
-        normalized = (question or "").strip().lower()
+    GREETING_KEYWORDS = {
+        "hi",
+        "hello",
+        "xin chào",
+        "chào",
+        "cảm ơn",
+        "thanks",
+        "thank",
+    }
+
+    def answer(
+        self,
+        question: str,
+        snapshot: dict,
+        tracks: list[Track],
+    ) -> dict[str, Any]:
+
+        normalized = question.strip().lower()
+
         if not normalized:
-            return {"scope": "out_of_scope", "answer": "Tôi cần một câu hỏi liên quan đến đánh giá và định hướng nhánh để hỗ trợ."}
+            return {
+                "scope": "out_of_scope",
+                "answer": (
+                    "Bạn có thể hỏi về kết quả đánh giá hoặc các Track ở Giai đoạn 2."
+                ),
+                "search_query": "",
+            }
 
-        greeting_terms = ["chào", "xin chào", "hello", "hi", "cảm ơn", "thank", "thanks", "bạn ơi", "em ơi"]
-        off_topic_terms = ["thời tiết", "ngoại khóa", "đi chơi", "đời tư", "sức khỏe", "tình cảm", "gia đình", "cv", "xin việc", "việc làm", "lương", "du lịch", "tâm lý"]
+        if self._is_out_of_scope(normalized):
+            return {
+                "scope": "out_of_scope",
+                "answer": (
+                    "Tôi chỉ hỗ trợ giải đáp về kết quả đánh giá và định hướng "
+                    "Track sau khi hoàn thành Track 1."
+                ),
+                "search_query": "",
+            }
 
-        if any(term in normalized for term in greeting_terms) or any(term in normalized for term in off_topic_terms):
-            return {"scope": "out_of_scope", "answer": "Tôi chỉ hỗ trợ phân tích kết quả đánh giá và gợi ý nhánh định hướng ở Giai đoạn 2."}
+        track_map = {
+            track.id.lower(): track
+            for track in tracks
+        }
 
-=======
-    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
-        normalized = question.lower()
-        if any(keyword in normalized for keyword in ["thời tiết", "ngoại khóa", "đi chơi"]):
-            return {"scope": "out_of_scope", "answer": "Tôi chỉ hỗ trợ phân tích kết quả đánh giá và gợi ý nhánh định hướng ở Giai đoạn 2.", "search_query": ""}
->>>>>>> b3df1bb7661bb91d787c0073a29db3ca6b333913
-        recommended = ", ".join(snapshot.get("recommendation_ids", []))
-        return {"scope": "in_scope", "answer": f"Dựa trên snapshot đánh giá, các nhánh được đề xuất là {recommended}. Hãy xem lại điểm Lab và Quiz tích lũy để chọn nhánh phù hợp nhất.", "search_query": ""}
+        if any(k in normalized for k in ["đề xuất", "recommend", "nên học", "gợi ý"]):
+            return self._answer_recommendation(snapshot, track_map)
 
-    def search_references(self, question: str, search_query: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]:
-        """Mock không tra cứu web; answer() không bao giờ trả needs_reference nên đây chỉ là fallback an toàn."""
-        return {"answer": "Bản demo cục bộ chưa tra cứu được nguồn ngoài.", "sources": [], "grounded": False}
+        for track in track_map.values():
+            if track.name.lower() in normalized or track.id.lower() in normalized:
+                return self._answer_track(track)
 
+        return self._default_answer(snapshot)
+
+    def _is_out_of_scope(self, question: str) -> bool:
+        keywords = self.OUT_OF_SCOPE_KEYWORDS | self.GREETING_KEYWORDS
+        return any(k in question for k in keywords)
+
+    def _answer_recommendation(
+        self,
+        snapshot: dict,
+        track_map: dict[str, Track],
+    ) -> dict[str, Any]:
+
+        ids = snapshot.get("recommendation_ids", [])
+
+        if not ids:
+            return {
+                "scope": "in_scope",
+                "answer": (
+                    "Hiện chưa có kết quả đánh giá để đưa ra khuyến nghị."
+                ),
+                "search_query": "",
+            }
+
+        names = [
+            track_map[id].name
+            for id in ids
+            if id in track_map
+        ]
+
+        return {
+            "scope": "in_scope",
+            "answer": (
+                "Theo kết quả đánh giá, các Track phù hợp nhất là: "
+                + ", ".join(names)
+                + ". Bạn nên ưu tiên Track đầu tiên nếu muốn tối đa hóa khả năng theo kịp nội dung."
+            ),
+            "search_query": "",
+        }
+
+    def _answer_track(self, track: Track) -> dict[str, Any]:
+
+        lessons = ", ".join(track.lesson_weights.keys())
+
+        return {
+            "scope": "in_scope",
+            "answer": (
+                f"{track.name} phù hợp với học viên có nền tảng tốt ở các nội dung: "
+                f"{lessons}."
+            ),
+            "search_query": "",
+        }
+
+    def _default_answer(self, snapshot: dict) -> dict[str, Any]:
+
+        ids = snapshot.get("recommendation_ids", [])
+
+        if ids:
+            answer = (
+                "Tôi có thể hỗ trợ giải thích lý do các Track được đề xuất, "
+                "so sánh giữa các Track hoặc tư vấn lựa chọn Track phù hợp với kết quả đánh giá của bạn."
+            )
+        else:
+            answer = (
+                "Bạn hãy hoàn thành bài đánh giá trước, sau đó tôi sẽ phân tích "
+                "kết quả và gợi ý Track phù hợp."
+            )
+
+        return {
+            "scope": "in_scope",
+            "answer": answer,
+            "search_query": "",
+        }
 
 
 def build_provider():

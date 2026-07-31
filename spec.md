@@ -81,11 +81,11 @@ Kịch bản:
 
 | Vai trò | Người phụ trách | Nhiệm vụ chính |
 |---|---|---|
-| Spec & Evidence | Hưng/2A202601829 | Viết spec, định nghĩa user/job, impact, lát cắt và các kịch bản lỗi; chuẩn bị bằng chứng đầu vào cho phần §1-§2. |
-| Data & Prompt | Người 2 | Chuẩn bị mock data, kiểm tra schema dữ liệu đầu vào, xây dựng prompt cho hệ thống AI và tối ưu cách chatbot trả lời theo phạm vi đề tài. |
+| Spec & Evidence | Hoàng/2A202601727 | Viết spec, định nghĩa user/job, impact, lát cắt và các kịch bản lỗi; chuẩn bị bằng chứng đầu vào cho phần §1-§2. |
+| Data & Prompt | Quang - 2A202601255 | Chuẩn bị mock data, kiểm tra schema dữ liệu đầu vào, xây dựng prompt cho hệ thống AI và tối ưu cách chatbot trả lời theo phạm vi đề tài. |
 | Backend & Logic | Hưng/2A202601829 | Phát triển backend/API, logic tạo assessment, tính Lab completion/Quiz score và kết nối với provider AI. |
 | Frontend & UX | Khua/2A202601129 | Phát triển giao diện web, hiển thị tự đánh giá, kết quả nhánh và trải nghiệm chat cho học viên. |
-| Evaluation & Demo | Người 5 | Chuẩn bị golden set, bảng kết quả chạy, validation feedback và slide demo cho vòng trình bày. |
+| Evaluation & Demo | Long - 2A202601025 | Chuẩn bị golden set, bảng kết quả chạy, validation feedback và slide demo cho vòng trình bày. |
 
 | Giai đoạn | Mục tiêu |
 |---|---|

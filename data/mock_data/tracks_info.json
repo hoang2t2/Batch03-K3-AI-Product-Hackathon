@@ -61,7 +61,7 @@
   },
 
   "infrastructure": {
-    "name": "AI Infrastructure",
+    "name": "AI and Data Infrastructure",
 
     "description": "Tập trung xây dựng nền tảng phục vụ AI bao gồm Data Pipeline, Cloud, Deployment, Monitoring, LLMOps và tối ưu khả năng vận hành hệ thống.",
 
