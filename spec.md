@@ -11,12 +11,19 @@ Loại: [x] Tính năng mới
   - Ví dụ nguyên văn: "Em không biết mình phù hợp nhánh nào", "Em thấy Lab làm được nhưng không biết có đủ tốt không", "Quiz có điểm cao nhưng em vẫn không chắc mình nên đi đâu".
 
 ## §2. Impact & quyết định chọn
-- Bảng impact:
-  | Ứng viên | Số người gặp | Tần suất | Mỗi lần tốn gì | Khả thi build | Chọn |
-  |---|---:|---:|---|---|---|
-  | Học viên chưa rõ nhánh | 30 | thường xuyên | 30-60 phút suy nghĩ + có thể làm lại dự án | Cao | Có |
-  | Trợ giảng tư vấn 1:1 | 15 | thường xuyên | 20-30 phút mỗi học viên | Cao | Có |
-  | Giảng viên theo dõi tiến độ | 10 | định kỳ | mất thời gian tổng hợp | Trung bình | Có |
+
+| Ứng viên | Người bị ảnh hưởng | Tần suất | Chi phí/hậu quả mỗi lần | Khả thi | Quyết định |
+|---|---|---|---|---|---|
+| **Học viên thiếu căn cứ để chọn track sau 15 ngày** | Học viên chưa xác định được track phù hợp; cần bổ sung số liệu khảo sát | 1 lần/học viên tại mốc chọn track; hậu quả kéo dài trong suốt track | Chọn track không phù hợp, khó theo kịp, phải học bù hoặc đổi hướng; tăng tải tư vấn 1:1 cho giảng viên/lab coach | **Cao** — có thể sử dụng lesson scores và thông tin chính thức của 3 track để xây prototype | **Chọn** |
+| **Lỗi VLearn làm gián đoạn trải nghiệm học** | Học viên đang sử dụng VLearn | Có thể xảy ra nhiều lần trong quá trình học | Không truy cập được bài học hoặc tutor, gián đoạn quá trình học và phải chờ hỗ trợ kỹ thuật | **Thấp** — cần quyền can thiệp vào hệ thống production và phụ thuộc team vận hành VLearn | Loại |
+| **Giảng viên thiếu thông tin về mức độ hiểu bài của học viên trước buổi học** | Giảng viên và học viên trong lớp | Mỗi buổi học | Giảng viên khó điều chỉnh nội dung và tốc độ giảng, có thể dạy lệch nhu cầu thực tế của lớp | **Trung bình** — cần thiết kế khảo sát đầu buổi và tích hợp vào workflow giảng dạy | Loại |
+
+### Lý do lựa chọn
+
+Nhóm chọn bài toán **học viên thiếu căn cứ để chọn track sau 15 ngày** vì đây là một quyết định chỉ diễn ra một lần nhưng có **cost-of-error cao** và ảnh hưởng đến toàn bộ quá trình học tiếp theo. Bài toán có phạm vi rõ, có thể prototype bằng lesson scores và thông tin chính thức của ba track, đồng thời phù hợp với thời gian sự kiện.
+
+Bài toán **sửa lỗi VLearn** bị loại vì chưa xác định rõ các hoạt động của sản phẩm. Bài toán **khảo sát kiến thức trước buổi học** bị loại vì cần thay đổi workflow của giảng viên và cần thêm thời gian để kiểm chứng hiệu quả thực tế.
+
 - Ứng viên đã loại: học viên không cần định hướng ngay vì đã có mục tiêu rõ ràng.
 - Ứng viên chọn: học viên sau Giai đoạn 1 cần một công cụ hỗ trợ tự đánh giá nhanh và gợi ý nhánh phù hợp.
 
@@ -47,7 +54,7 @@ Loại: [x] Tính năng mới
 - ④ Đặc thù domain: nhánh đúng không đơn thuần là điểm số, cần bảo vệ tính phù hợp với bối cảnh khoá học.
 
 Kịch bản:
-1. Học viên nhập thiếu điểm Lab/Quiz ⇒ hệ thống báo dữ liệu chưa đủ.
+1. Học viên thiếu điểm Lab/Quiz ⇒ hệ thống báo dữ liệu chưa đủ.
 2. AI đưa ra nhánh không liên quan tới điểm mạnh ⇒ hệ thống cần giải thích bằng dữ liệu.
 3. Học viên hỏi ngoài phạm vi ⇒ chatbot trả về out_of_scope.
 4. Một học viên có điểm kỹ thuật cao nhưng yếu product ⇒ hệ thống ưu tiên nhánh phù hợp hơn.
@@ -74,10 +81,10 @@ Kịch bản:
 
 | Vai trò | Người phụ trách | Nhiệm vụ chính |
 |---|---|---|
-| Spec & Evidence | Người 1 | Viết spec, định nghĩa user/job, impact, lát cắt và các kịch bản lỗi; chuẩn bị bằng chứng đầu vào cho phần §1-§2. |
+| Spec & Evidence | Hưng/2A202601829 | Viết spec, định nghĩa user/job, impact, lát cắt và các kịch bản lỗi; chuẩn bị bằng chứng đầu vào cho phần §1-§2. |
 | Data & Prompt | Người 2 | Chuẩn bị mock data, kiểm tra schema dữ liệu đầu vào, xây dựng prompt cho hệ thống AI và tối ưu cách chatbot trả lời theo phạm vi đề tài. |
-| Backend & Logic | Người 3 | Phát triển backend/API, logic tạo assessment, tính Lab completion/Quiz score và kết nối với provider AI. |
-| Frontend & UX | Người 4 | Phát triển giao diện web, hiển thị tự đánh giá, kết quả nhánh và trải nghiệm chat cho học viên. |
+| Backend & Logic | Hưng/2A202601829 | Phát triển backend/API, logic tạo assessment, tính Lab completion/Quiz score và kết nối với provider AI. |
+| Frontend & UX | Khua/2A202601129 | Phát triển giao diện web, hiển thị tự đánh giá, kết quả nhánh và trải nghiệm chat cho học viên. |
 | Evaluation & Demo | Người 5 | Chuẩn bị golden set, bảng kết quả chạy, validation feedback và slide demo cho vòng trình bày. |
 
 | Giai đoạn | Mục tiêu |

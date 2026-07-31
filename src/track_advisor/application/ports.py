@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Protocol
+from typing import Any, Protocol
 
 from track_advisor.domain.models import StudentProfile, Track, TrackResult
 
@@ -17,4 +17,5 @@ class AssessmentRepository(Protocol):
 
 class TrackAdvisorProvider(Protocol):
     def evaluate(self, profile: StudentProfile, tracks: list[Track]) -> list[TrackResult]: ...
-    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]: ...
+    def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]: ...
+    def search_references(self, question: str, search_query: str, snapshot: dict, tracks: list[Track]) -> dict[str, Any]: ...

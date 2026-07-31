@@ -95,3 +95,43 @@ Dữ liệu trong `data/` là dữ liệu thật của khoá học (đã ẩn da
 
 Vi phạm được xử lý theo quy định của khoá và có thể ảnh hưởng trực tiếp đến điểm của nhóm.
 
+## Prototype — Track Advisor
+
+MVP cục bộ dùng mock data điểm quá trình 15 buổi trong `data/mock_data/student_scores.json` và trọng số mỗi buổi trong `data/mock_data/lessons_info.json`. Schema mới có thêm `cv_descriptions`; app parse/validate đủ trường đó nhưng **không gửi CV vào prompt chấm**. Gemini chỉ tự đánh giá ba track trên thang **0–10** bằng weighted average từ điểm, metadata lesson và guideline track; UI không thu CV hoặc profile tự khai. Một nút tạo dashboard so sánh đủ 3 track; chat sau đó dùng Gemini prompt với snapshot dashboard và catalogue track, không dùng rule-based scope gate. Dữ liệu runtime nằm trong `runtime/` và đã được git-ignore.
+
+**Chat có 3 scope.** Gemini tự phân loại mỗi câu hỏi: `in_scope` trả lời bằng snapshot dashboard; `out_of_scope` (thời tiết, đời tư…) từ chối một câu; `needs_reference` là câu vẫn đúng chủ đề học tập/nghề AI nhưng bảng điểm không chứa dữ liệu — ví dụ *"AI Product sau này làm những gì"*, *"có video nào chia sẻ về nghề này không"*. Scope này không từ chối nữa mà gọi bước tra cứu: chạy lại Gemini với tool `google_search`, lấy URL thật từ `grounding_metadata` và trả kèm danh sách nguồn (đánh dấu bài viết 📄 / video ▶) hiển thị dưới câu trả lời.
+
+Grounding có quota riêng và hiện **trả 429 trên free tier** (gọi Gemini thường vẫn chạy bình thường). Khi bước tra cứu hỏng hoặc không thu được nguồn nào, app rơi về phương án dự phòng: trả lời bằng kiến thức chung kèm câu cảnh báo *"chưa tra cứu được nguồn trực tiếp"* và sinh link tìm kiếm Google/YouTube từ từ khoá do model đề xuất — link tra cứu luôn hợp lệ nên demo không phụ thuộc quota. Bật quota grounding (billing) là tự động có nguồn thật, không cần đổi code.
+
+```bash
+uv sync
+uv run python main.py
+```
+
+Mở `http://127.0.0.1:8000`. Khi SSH, tạo tunnel ở máy local:
+
+```bash
+ssh -L 8000:127.0.0.1:8000 <user>@<server>
+```
+
+Để chạy provider Google Gemini, đặt API key trong môi trường (không commit key):
+
+```bash
+export GEMINI_API_KEY="..."
+export GEMINI_MODEL="gemini-3.5-flash-lite"
+uv run python main.py
+```
+
+App cần `GEMINI_API_KEY` và tự đọc `.env`. Nguồn mock gồm `student_scores.json`, `lessons_info.json` và `tracks_info.json`. Ba track trong mock hiện là **AI Application**, **AI Product** và **AI Infrastructure**. Các file này phải được thay bằng integration DB nội bộ trước khi dùng thật.
+
+### Cấu trúc AI
+
+```text
+src/track_advisor/
+├── domain/          # StudentProfile, Track, catalogue
+├── application/     # use cases assessment + scoped chat, ports
+├── infrastructure/  # Gemini provider, JSON repositories
+└── presentation/    # HTTP API + static dashboard
+data/mock_data/      # điểm 15 buổi, mô tả track và trọng số lesson
+tests/               # use-case tests, không gọi LLM thật
+```

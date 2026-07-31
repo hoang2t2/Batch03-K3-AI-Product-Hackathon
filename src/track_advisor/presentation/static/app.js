@@ -7,6 +7,37 @@ function esc(value) {
   p.textContent = value == null ? "" : String(value);
   return p.innerHTML;
 }
+const inline = (value) => value.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+function markdown(value) {
+  // Escape first, then build HTML: câu trả lời của model không bao giờ chèn được thẻ thật.
+  const lines = esc(value).replace(/\s*(#{1,6}\s)/g, "\n$1").replace(/\s+(- )/g, "\n$1").split("\n").map((line) => line.trim());
+  let html = "", inList = false;
+  for (const line of lines) {
+    const heading = line.match(/^#{1,6}\s+(.*)$/);
+    if (line.startsWith("- ") || line.startsWith("* ")) {
+      html += (inList ? "" : "<ul>") + `<li>${inline(line.slice(2))}</li>`;
+      inList = true;
+      continue;
+    }
+    if (inList) { html += "</ul>"; inList = false; }
+    if (line) html += heading ? `<h4>${inline(heading[1])}</h4>` : `<p>${inline(line)}</p>`;
+  }
+  return html + (inList ? "</ul>" : "");
+}
+const attr = (value) => esc(value).replace(/"/g, "&quot;");
+function httpUrl(value) {
+  // Nguồn đến từ model/web nên chỉ nhận http(s), chặn javascript: và data:.
+  try { const url = new URL(String(value), location.href); return /^https?:$/.test(url.protocol) ? url.href : ""; }
+  catch { return ""; }
+}
+function sourceList(sources, grounded) {
+  const items = (sources || []).map((source) => ({ ...source, href: httpUrl(source.url) })).filter((source) => source.href);
+  if (!items.length) return "";
+  const label = grounded ? "Nguồn tham khảo tìm được" : "Link tra cứu gợi ý";
+  return `<div class="sources"><p class="sources-title">${label}</p><ul>${items.map((source) =>
+    `<li><span class="kind">${source.kind === "video" ? "▶" : "📄"}</span><a href="${attr(source.href)}" target="_blank" rel="noopener noreferrer">${esc(source.title || source.href)}</a>${source.source ? `<span class="host">${esc(source.source)}</span>` : ""}</li>`
+  ).join("")}</ul></div>`;
+}
 
 async function request(url, options) {
   const response = await fetch(url, options);
@@ -191,10 +222,14 @@ $("chat").onsubmit = async (event) => {
     $("messages").insertAdjacentHTML("beforeend", `<p class="bot">Bấm <b>Xem đánh giá Giai đoạn 1</b> trước để trợ lý AI có thể dùng kết quả của bạn.</p>`);
     return;
   }
+  $("messages").insertAdjacentHTML("beforeend", `<p class="bot pending">Đang tìm câu trả lời…</p>`);
+  const pending = $("messages").lastElementChild;
   try {
     const output = await request("/api/chats", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ assessment_id: assessmentId, question }) });
-    $("messages").insertAdjacentHTML("beforeend", `<p class="bot">${esc(output.answer)}</p>`);
+    pending.remove();
+    $("messages").insertAdjacentHTML("beforeend", `<div class="bot">${markdown(output.answer)}${sourceList(output.sources, output.grounded)}</div>`);
   } catch (error) {
+    pending.remove();
     $("messages").insertAdjacentHTML("beforeend", `<p class="bot">${esc(error.message)}</p>`);
   }
 };
