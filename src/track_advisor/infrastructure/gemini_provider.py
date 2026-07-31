@@ -74,10 +74,11 @@ LESSON_WEIGHTS:
         ]
 
     def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
+        snapshot = snapshot or {}
         dashboard_snapshot = {
-            "assessment_id": snapshot["assessment_id"],
-            "track_results": snapshot["track_results"],
-            "recommendation_ids": snapshot["recommendation_ids"],
+            "assessment_id": snapshot.get("assessment_id", "unknown"),
+            "track_results": snapshot.get("track_results", []),
+            "recommendation_ids": snapshot.get("recommendation_ids", []),
         }
         prompt = f"""You are a closed-scope Track Advisor. Decide the scope yourself from the QUESTION.
 Answer in Vietnamese using ONLY the ASSESSMENT SNAPSHOT and TRACKS below. Do not browse, call tools,
@@ -110,9 +111,16 @@ class MockTrackAdvisorProvider:
         return sorted(results, key=lambda item: -item.suitability_score)
 
     def answer(self, question: str, snapshot: dict, tracks: list[Track]) -> dict[str, str]:
-        normalized = question.lower()
-        if any(keyword in normalized for keyword in ["thời tiết", "ngoại khóa", "đi chơi"]):
+        normalized = (question or "").strip().lower()
+        if not normalized:
+            return {"scope": "out_of_scope", "answer": "Tôi cần một câu hỏi liên quan đến đánh giá và định hướng nhánh để hỗ trợ."}
+
+        greeting_terms = ["chào", "xin chào", "hello", "hi", "cảm ơn", "thank", "thanks", "bạn ơi", "em ơi"]
+        off_topic_terms = ["thời tiết", "ngoại khóa", "đi chơi", "đời tư", "sức khỏe", "tình cảm", "gia đình", "cv", "xin việc", "việc làm", "lương", "du lịch", "tâm lý"]
+
+        if any(term in normalized for term in greeting_terms) or any(term in normalized for term in off_topic_terms):
             return {"scope": "out_of_scope", "answer": "Tôi chỉ hỗ trợ phân tích kết quả đánh giá và gợi ý nhánh định hướng ở Giai đoạn 2."}
+
         recommended = ", ".join(snapshot.get("recommendation_ids", []))
         return {"scope": "in_scope", "answer": f"Dựa trên snapshot đánh giá, các nhánh được đề xuất là {recommended}. Hãy xem lại điểm Lab và Quiz tích lũy để chọn nhánh phù hợp nhất."}
 

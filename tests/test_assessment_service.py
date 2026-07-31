@@ -70,12 +70,14 @@ class AssessmentServiceTests(unittest.TestCase):
 
     def test_build_provider_falls_back_to_mock_when_key_missing(self):
         previous = os.environ.get("GEMINI_API_KEY")
-        os.environ.pop("GEMINI_API_KEY", None)
+        os.environ["GEMINI_API_KEY"] = ""
         try:
             provider = build_provider()
             self.assertEqual(provider.__class__.__name__, "MockTrackAdvisorProvider")
         finally:
-            if previous is not None:
+            if previous is None:
+                os.environ.pop("GEMINI_API_KEY", None)
+            else:
                 os.environ["GEMINI_API_KEY"] = previous
 
     def test_snapshot_includes_self_assessment_context(self):
@@ -83,3 +85,32 @@ class AssessmentServiceTests(unittest.TestCase):
         self.assertIn("self_assessment_context", snapshot)
         self.assertEqual(snapshot["self_assessment_context"]["student_id"], "student-1")
         self.assertEqual(snapshot["self_assessment_context"]["giai_doan_1_focus"], "Tự đánh giá thế mạnh chuyên môn, Lab completion và Quiz score tích lũy")
+
+    def test_mock_provider_rejects_off_topic_requests(self):
+        previous = os.environ.get("GEMINI_API_KEY")
+        os.environ["GEMINI_API_KEY"] = ""
+        try:
+            provider = build_provider()
+            snapshot = {"assessment_id": "A-1", "track_results": [], "recommendation_ids": ["one", "two", "three"]}
+            result = provider.answer("Giúp em viết CV xin việc", snapshot, TRACKS)
+            self.assertEqual(result["scope"], "out_of_scope")
+        finally:
+            if previous is None:
+                os.environ.pop("GEMINI_API_KEY", None)
+            else:
+                os.environ["GEMINI_API_KEY"] = previous
+
+    def test_mock_provider_rejects_greetings_and_irrelevant_questions(self):
+        previous = os.environ.get("GEMINI_API_KEY")
+        os.environ["GEMINI_API_KEY"] = ""
+        try:
+            provider = build_provider()
+            snapshot = {"assessment_id": "A-1", "track_results": [], "recommendation_ids": ["one", "two", "three"]}
+            for question in ["Chào em", "Cảm ơn", "Em có thể kể chuyện đời tư không?"]:
+                with self.subTest(question=question):
+                    self.assertEqual(provider.answer(question, snapshot, TRACKS)["scope"], "out_of_scope")
+        finally:
+            if previous is None:
+                os.environ.pop("GEMINI_API_KEY", None)
+            else:
+                os.environ["GEMINI_API_KEY"] = previous
